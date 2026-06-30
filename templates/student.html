@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="text-center mb-5">
+    <h1 class="display-4 fw-bold">{% if is_db %}{{ s.full_name }}{% else %}{{ s.name }}{% endif %}</h1>
+    <p class="lead text-danger">{{ s.course }} | {{ s.age }} Years Old</p>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="p-4 bg-light rounded-4 mb-4">
+            <h5 class="fw-bold text-uppercase small text-muted mb-3">My Story</h5>
+            <p class="fs-5">{% if is_db %}{{ s.story }}{% else %}{{ s.story }}{% endif %}</p>
+        </div>
+
+        <div class="mb-5">
+            <h5 class="fw-bold text-uppercase small text-muted mb-3">Top Skills</h5>
+            {% if is_db %}
+                {% for skill in s.skills.split(',') %}
+                    <span class="badge bg-dark p-2 px-3 me-2 mb-2">{{ skill.strip() }}</span>
+                {% endfor %}
+            {% else %}
+                {% for skill in s.skills.split(',') %}
+                    <span class="badge bg-primary p-2 px-3 me-2 mb-2">{{ skill.strip() }}</span>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        <a href="/profile" class="text-decoration-none text-dark fw-bold">← Back to Roster</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block title %}Sign In{% endblock %}
+{% block content %}
+<div class="text-center mb-4">
+    <h2>Welcome Back</h2>
+    <p class="text-muted">Enter your credentials to access your portal.</p>
+</div>
+<form method="POST" class="mx-auto" style="max-width: 400px;">
+    <div class="mb-3">
+        <label class="form-label">Username</label>
+        <input type="text" name="username" class="form-control" required>
+    </div>
+    <div class="mb-4">
+        <label class="form-label">Password</label>
+        <div class="input-group">
+            <!-- Added id="password" here -->
+            <input type="password" name="password" id="password" class="form-control" required style="border-right: none;">
+            <span class="input-group-text bg-white" style="cursor: pointer; border-left: none;" id="togglePassword">
+                <i class="fa fa-eye-slash text-muted" id="eyeIcon"></i>
+            </span>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-dark w-100">SIGN IN</button>
+</form>
+
+<!-- This script makes the eye work -->
+<script>
+    const togglePassword = document.querySelector('#togglePassword');
+    const password = document.querySelector('#password');
+    const eyeIcon = document.querySelector('#eyeIcon');
+
+    togglePassword.addEventListener('click', function () {
+        // Toggle the type attribute
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+        
+        // Toggle the eye icon
+        eyeIcon.classList.toggle('fa-eye');
+        eyeIcon.classList.toggle('fa-eye-slash');
+    });
+</script>
+{% endblock %}

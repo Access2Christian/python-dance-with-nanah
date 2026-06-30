@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block title %}Directory{% endblock %}
+{% block content %}
+    <h1 class="mb-5 fw-bold">The Dance Roster</h1>
+    <p class="text-muted mb-5">Meet the Nigerian developers shaking the tech world.</p>
+    
+    <div class="row g-4">
+        <!-- Loop for DB Recruits -->
+        {% for r in recruits %}
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100 border-0 shadow-sm p-4 text-center">
+                <div class="mb-3">
+                    <span class="badge bg-secondary rounded-pill">{{ r.age }} Years</span>
+                </div>
+                <h4 class="fw-bold mb-1">{{ r.full_name }}</h4>
+                <p class="text-danger small fw-bold mb-3">{{ r.course }}</p>
+                <p class="text-muted small mb-4" style="height: 45px; overflow: hidden;">"{{ r.story }}"</p>
+                <a href="{{ url_for('student', username=r.username) }}" class="btn btn-dark btn-sm rounded-pill w-100">Full Portfolio</a>
+            </div>
+        </div>
+        {% endfor %}
+
+        <!-- Loop for Static Legends -->
+        {% for l in legends %}
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100 border-0 shadow-sm p-4 text-center">
+                <div class="mb-3">
+                    <span class="badge bg-secondary rounded-pill">{{ l.age }} Years</span>
+                </div>
+                <h4 class="fw-bold mb-1">{{ l.name }}</h4>
+                <p class="text-danger small fw-bold mb-3">{{ l.course }}</p>
+                <p class="text-muted small mb-4" style="height: 45px; overflow: hidden;">"{{ l.story }}"</p>
+                <a href="{{ url_for('student', username=l.username) }}" class="btn btn-dark btn-sm rounded-pill w-100">Full Portfolio</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

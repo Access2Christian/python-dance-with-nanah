@@ -1,0 +1,6 @@
+miva_nexus.db
+academy.db
+__pycache__/
+*.pyc
+.venv/
+.vscode/
