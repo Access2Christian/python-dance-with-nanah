@@ -1,7 +1,7 @@
 import os
-from flask import Flask, render_template, request, url_for, flash, redirect, session
-from flask_sqlalchemy import SQLAlchemy
-from werkzeug.security import generate_password_hash, check_password_hash
+from flask import Flask, render_template, request, url_for, flash, redirect, session # pyright: ignore[reportMissingImports]
+from flask_sqlalchemy import SQLAlchemy # pyright: ignore[reportMissingImports]
+from werkzeug.security import generate_password_hash, check_password_hash # pyright: ignore[reportMissingImports]
 
 app = Flask(__name__)
 app.secret_key = "nanah_python_dance_strong_finish"
@@ -26,7 +26,7 @@ class User(db.Model):
 
 # Static Legends to keep the directory looking full
 LEGENDS = [
-    {"username": "chidubem", "name": "Chidubem", "age": 24, "course": "Backend Eng", "skills": "Python, Flask, SQL", "story": "The first to dance with Python in Enugu."},
+    {"username": "chidubem", "name": "Chidubem", "age": 24, "course": "Backend Engineering", "skills": "Python, Flask, SQL", "story": "The first to dance with Python in Enugu."},
     {"username": "aisha", "name": "Aisha", "age": 22, "course": "Data Science", "skills": "Pandas, Stats", "story": "Visualizing the rhythm of the North."}
 ]
 
